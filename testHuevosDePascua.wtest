@@ -1,12 +1,27 @@
 import huevosDePascua.*
 
-describe "group of tests" {
+describe "test del juego de caceria de huevos de pascua" {
 
-  test "test 1" {
-    assert.equals(50+50, 100)
+  method initialize() {
+    blisterHuevitos.cantidad(14)
+    matrioshka.huevoEnInterior(blisterHuevitos)
+    flor.petalos(7)
+    matrioshka.decoracion(flor)
+    juego.agregarHuevos([matrioshka,huevoRepostero,conejo,huevoMixto])
   }
-  test "test 2" {
-    assert.that(true)
+  test "el huevo de mayor calorias es la matrioshka" {
+    assert.equals(matrioshka, juego.elDeMayorCalorias())
+  }
+  test "secuencia descripta" {
+    juego.encontrarPrimerHuevoPor(ana)
+    assert.equals(3,juego.cuantosFaltanEncontrar())
+    assert.equals(2,juego.cuantosConChocoBlanco())
+    assert.that(juego.aunNoFueEncontrado(conejo))
+    assert.equals([huevoRepostero,huevoMixto],juego.losDeChocolateBlanco())
+    juego.encontrarUnHuevoPor(huevoMixto, tito)
+    juego.encontrarRestantesPor(jose)
+    assert.that(ana.estaEnfermo())
+    assert.that(jose.estaEnfermo())
   }
 
 }
